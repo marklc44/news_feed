@@ -10,20 +10,23 @@ app.use(bodyParser.urlencoded());
 // Templating
 // app.engine('html', ejs.__engine);
 app.set('view engine', 'ejs');
+app.set('view options', {
+	layout: true
+})
 
 // Data
 var articles = [
 	{
 		title: "Sample",
 		author: "Sample Author",
-		description: "Sample Description"
+		desc: "Sample Description"
 	}
 ];
 
 // Routes
 
 app.get('/articles', function(req, res) {
-	res.render('articles/articles', {articles: articles});
+	res.render('articles/articles', { articles: articles });
 });
 
 app.get('/articles/new', function(req, res) {
@@ -37,7 +40,9 @@ app.post('/articles', function(req, res) {
 });
 
 app.get('/articles/:id', function(req, res) {
-	res.render('articles/show');
+	var index = req.params.id;
+	var article = articles[index];
+	res.render('articles/show', { article: article });
 });
 
 app.get('/', function(req, res) {

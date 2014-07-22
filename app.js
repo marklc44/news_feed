@@ -10,9 +10,7 @@ app.use(bodyParser.urlencoded());
 // Templating
 // app.engine('html', ejs.__engine);
 app.set('view engine', 'ejs');
-app.set('view options', {
-	layout: true
-})
+app.set('layout', 'layout');
 
 // Data
 var articles = [

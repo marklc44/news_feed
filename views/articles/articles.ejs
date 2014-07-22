@@ -1,9 +1,12 @@
 <%- include ../partials/header.ejs %>
 <h1>Articles</h1>
 
-<ul>
-	<% articles.forEach(function(article) { %>
-		<li><%= article.title %></li>
+<ul class="article-list">
+	<% articles.forEach(function(article, index) { %>
+		<li>
+			<h4><a href="articles/<%= index %>"><%= article.title %></a></h4>
+			<p><em><%= article.author %></em></p>
+		</li>
 	<% }) %>
 </ul>
 

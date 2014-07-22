@@ -1,6 +1,7 @@
 var express = require('express'),
 		ejs = require('ejs'),
-		bodyParser = require('body-parser');
+		bodyParser = require('body-parser')
+		ejsLayouts = require('express-ejs-layouts');
 
 var app = express();
 
@@ -12,14 +13,25 @@ app.use(bodyParser.urlencoded());
 app.set('view engine', 'ejs');
 app.set('layout', 'layout');
 
+app.use("/assets", express.static(__dirname + '/assets'));
+
 // Data
 var articles = [
 	{
-		title: "Sample",
-		author: "Sample Author",
-		desc: "Sample Description"
+		title: "Lex Luther on Trial",
+		author: "Jimmie Olson",
+		desc: "A jury deliberates on charges of villainy, and nastiness."
+	},
+	{
+		title: "Lois Lane 30 minute ab workout",
+		author: "Clark Kent",
+		desc: "Get abs that would make Superman swoon."
 	}
 ];
+
+// Layout Utility
+
+var layoutsFolder = __dirname + '/views';
 
 // Routes
 

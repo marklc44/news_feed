@@ -4,6 +4,9 @@ var express = require('express'),
 
 var app = express();
 
+// body parser
+app.use(bodyParser.urlencoded());
+
 // Templating
 // app.engine('html', ejs.__engine);
 app.set('view engine', 'ejs');
@@ -28,7 +31,9 @@ app.get('/articles/new', function(req, res) {
 });
 
 app.post('/articles', function(req, res) {
-
+	articles.push(req.body.article);
+	console.log(req.body.article);
+	res.redirect('/articles');
 });
 
 app.get('/articles/:id', function(req, res) {

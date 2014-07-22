@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded());
 app.set('view engine', 'ejs');
 app.set('layout', 'layout');
 
+app.use(ejsLayouts);
 app.use("/assets", express.static(__dirname + '/assets'));
 
 // Data
@@ -36,11 +37,14 @@ var layoutsFolder = __dirname + '/views';
 // Routes
 
 app.get('/articles', function(req, res) {
-	res.render('articles/articles', { articles: articles });
+	res.render('articles/articles', { 
+		articles: articles,
+		layout: 'layout'
+	 });
 });
 
 app.get('/articles/new', function(req, res) {
-	res.render('articles/new');
+	res.render('articles/new', {layout: 'layout'});
 });
 
 app.post('/articles', function(req, res) {
@@ -52,19 +56,22 @@ app.post('/articles', function(req, res) {
 app.get('/articles/:id', function(req, res) {
 	var index = req.params.id;
 	var article = articles[index];
-	res.render('articles/show', { article: article });
+	res.render('articles/show', { 
+		article: article,
+		layout: 'layout'
+	});
 });
 
 app.get('/', function(req, res) {
-	res.render('site/index');
+	res.render('site/index', {layout: 'layout'});
 });
 
 app.get('/about', function(req, res) {
-	res.render('site/about');
+	res.render('site/about', {layout: 'layout'});
 });
 
 app.get('/contact', function(req, res) {
-	res.render('site/contact');
+	res.render('site/contact', {layout: 'layout'});
 });
 
 app.listen(3000);

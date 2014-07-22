@@ -3,11 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>The Daily Planet</title>
+	<link rel="stylesheet" href="/assets/styles/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<% include "partials/header.ejs" %>
+	<header class="page-header">
+		<div class="logo">The Daily Planet</div>
+		<ul class="nav">
+			
+			<li><a href="/">Home</a></li>
+			<li><a href="/articles">Articles</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+			<li><a href="articles/new">Add Articles</a></li>
+		</ul>
+	</header>
+	<div class="content">
 
-	<%= body %>
-	
+		<%- body %>
+
+	</div>
 </body>
 </html>
